@@ -1,7 +1,5 @@
 package br.edu.com.uricer.model;
 
-import java.math.BigInteger;
-
 /**
  *
  * @author Gabriel
@@ -11,8 +9,11 @@ public class Pessoa {
     private Integer id;
     private String nome;
     private String endereco;
-    private Integer telefone;
     private String email;
+
+    public String getEndereco() {
+        return endereco;
+    }
 
     public Integer getId() {
         return id;
@@ -26,26 +27,6 @@ public class Pessoa {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    
-    public String getEndereco() {
-        return endereco;
-    }
-    
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public Integer getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(Integer telefone) {
-        this.telefone = telefone;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -53,11 +34,17 @@ public class Pessoa {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
     
-    
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 
     @Override
     public String toString() {
-        return "Pessoa[id: " + id + " nome: " + nome + "endereco: " + endereco + "telefone: " + telefone + "Email: " + email + "]";
+        return "Pessoa[id: " + id + " nome: " + nome + "endereco:" + endereco + "email:" + email +"]";
     }
 }

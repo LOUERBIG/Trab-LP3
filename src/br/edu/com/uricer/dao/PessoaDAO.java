@@ -22,13 +22,12 @@ public class PessoaDAO {
     }
 
     public Integer create(Pessoa pessoa) throws SQLException {
-        String sql = "insert into Pessoas(nome, endereco, email, telefone) values (? ,?, ?, ?)";
+        String sql = "insert into Pessoas(nome, endereco, email) values (? ,? ,?)";
         Integer idCriado = 0;
         try (PreparedStatement stm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stm.setString(1, pessoa.getNome());
             stm.setString(2, pessoa.getEndereco());
             stm.setString(3, pessoa.getEmail());
-            stm.setInt(4, pessoa.getTelefone());
             stm.execute();
             
             try (ResultSet resultSet = stm.getGeneratedKeys()) {
@@ -58,6 +57,7 @@ public class PessoaDAO {
                     pessoa.setId(resultSet.getInt("id"));
                     pessoa.setNome(resultSet.getString("nome"));
                     pessoa.setEndereco(resultSet.getString("endereco"));
+                    pessoa.setEmail(resultSet.getString("email"));
                 }
             }
         }
@@ -81,7 +81,6 @@ public class PessoaDAO {
                     pessoa.setNome(resultSet.getString("nome"));
                     pessoa.setEndereco(resultSet.getString("endereco"));
                     pessoa.setEmail(resultSet.getString("email"));
-                    pessoa.setTelefone(resultSet.getInt("telefone"));
                     pessoas.add(pessoa);
                 }
             }
@@ -98,7 +97,6 @@ public class PessoaDAO {
             stm.setInt(2, pessoa.getId());
             stm.setString(3, pessoa.getEndereco());
             stm.setString(4, pessoa.getEmail());
-            stm.setInt(5, pessoa.getTelefone());
             stm.executeUpdate();
             
             con.commit();
