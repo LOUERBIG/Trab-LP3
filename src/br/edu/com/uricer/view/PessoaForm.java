@@ -327,6 +327,7 @@ public class PessoaForm extends javax.swing.JFrame {
             painelPrincipal.setSelectedIndex(1);
             edNome.setEnabled(true);
             edEndereco.setEnabled(true);
+            edEmail.setEnabled(true);
             btNovo.setEnabled(false);
             btGravar.setEnabled(true);
             btCancelar.setEnabled(true);
@@ -393,6 +394,7 @@ public class PessoaForm extends javax.swing.JFrame {
         edId.setText("");
         edNome.setText("");
         edEndereco.setText("");
+        edEmail.setText("");
     }
     /**
      * @param args the command line arguments
