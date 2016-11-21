@@ -22,12 +22,14 @@ public class PessoaDAO {
     }
 
     public Integer create(Pessoa pessoa) throws SQLException {
-        String sql = "insert into Pessoas(nome, endereco, email) values (? ,? ,?)";
+        String sql = "insert into Pessoas(nome, endereco, bairro,cidade, email) values (? ,? ,?, ?, ?)";
         Integer idCriado = 0;
         try (PreparedStatement stm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stm.setString(1, pessoa.getNome());
             stm.setString(2, pessoa.getEndereco());
-            stm.setString(3, pessoa.getEmail());
+            stm.setString(3, pessoa.getBairro());
+            stm.setString(4, pessoa.getCidade());
+            stm.setString(5, pessoa.getEmail());
             stm.execute();
             
             try (ResultSet resultSet = stm.getGeneratedKeys()) {
@@ -57,6 +59,8 @@ public class PessoaDAO {
                     pessoa.setId(resultSet.getInt("id"));
                     pessoa.setNome(resultSet.getString("nome"));
                     pessoa.setEndereco(resultSet.getString("endereco"));
+                    pessoa.setBairro(resultSet.getString("bairro"));
+                    pessoa.setCidade(resultSet.getString("cidade"));
                     pessoa.setEmail(resultSet.getString("email"));
                 }
             }
@@ -80,6 +84,8 @@ public class PessoaDAO {
                     pessoa.setId(resultSet.getInt("id"));
                     pessoa.setNome(resultSet.getString("nome"));
                     pessoa.setEndereco(resultSet.getString("endereco"));
+                    pessoa.setBairro(resultSet.getString("bairro"));
+                    pessoa.setCidade(resultSet.getString("cidade"));
                     pessoa.setEmail(resultSet.getString("email"));
                     pessoas.add(pessoa);
                 }
@@ -96,7 +102,9 @@ public class PessoaDAO {
             stm.setString(1, pessoa.getNome());
             stm.setInt(2, pessoa.getId());
             stm.setString(3, pessoa.getEndereco());
-            stm.setString(4, pessoa.getEmail());
+            stm.setString(4, pessoa.getBairro());
+            stm.setString(5, pessoa.getCidade());
+            stm.setString(6, pessoa.getEmail());
             stm.executeUpdate();
             
             con.commit();
