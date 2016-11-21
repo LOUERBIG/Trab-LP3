@@ -96,15 +96,16 @@ public class PessoaDAO {
     }   
     
     public void update(Pessoa pessoa) throws SQLException {
-        String sql = "update Pessoas set nome = ? where id = ?";
+        String sql = "update Pessoas set nome = ?,endereco = ?,bairro = ?,cidade = ?,email = ? where id = ?";
         
         try (PreparedStatement stm = con.prepareStatement(sql)) {
             stm.setString(1, pessoa.getNome());
-            stm.setInt(2, pessoa.getId());
-            stm.setString(3, pessoa.getEndereco());
-            stm.setString(4, pessoa.getBairro());
-            stm.setString(5, pessoa.getCidade());
-            stm.setString(6, pessoa.getEmail());
+            stm.setString(2, pessoa.getEndereco());
+            stm.setString(3, pessoa.getBairro());
+            stm.setString(4, pessoa.getCidade());
+            stm.setString(5, pessoa.getEmail());
+            stm.setInt(6, pessoa.getId());
+
             stm.executeUpdate();
             
             con.commit();
