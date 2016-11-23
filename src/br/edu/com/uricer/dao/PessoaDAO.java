@@ -22,7 +22,7 @@ public class PessoaDAO {
     }
 
     public Integer create(Pessoa pessoa) throws SQLException {
-        String sql = "insert into Pessoas(nome, endereco, bairro,cidade, email) values (? ,? ,?, ?, ?)";
+        String sql = "insert into Pessoas(nome, endereco, bairro,cidade, email,data) values (?, ? ,? ,?, ?, ?)";
         Integer idCriado = 0;
         try (PreparedStatement stm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stm.setString(1, pessoa.getNome());
@@ -30,6 +30,7 @@ public class PessoaDAO {
             stm.setString(3, pessoa.getBairro());
             stm.setString(4, pessoa.getCidade());
             stm.setString(5, pessoa.getEmail());
+            stm.setString(6, pessoa.getData());
             stm.execute();
             
             try (ResultSet resultSet = stm.getGeneratedKeys()) {
@@ -62,6 +63,7 @@ public class PessoaDAO {
                     pessoa.setBairro(resultSet.getString("bairro"));
                     pessoa.setCidade(resultSet.getString("cidade"));
                     pessoa.setEmail(resultSet.getString("email"));
+                    pessoa.setData(resultSet.getString("data"));
                 }
             }
         }
@@ -87,6 +89,7 @@ public class PessoaDAO {
                     pessoa.setBairro(resultSet.getString("bairro"));
                     pessoa.setCidade(resultSet.getString("cidade"));
                     pessoa.setEmail(resultSet.getString("email"));
+                    pessoa.setData(resultSet.getString("data"));
                     pessoas.add(pessoa);
                 }
             }
@@ -96,7 +99,7 @@ public class PessoaDAO {
     }   
     
     public void update(Pessoa pessoa) throws SQLException {
-        String sql = "update Pessoas set nome = ?,endereco = ?,bairro = ?,cidade = ?,email = ? where id = ?";
+        String sql = "update Pessoas set nome = ?,endereco = ?,bairro = ?,cidade = ?,email = ?,data = ? where id = ?";
         
         try (PreparedStatement stm = con.prepareStatement(sql)) {
             stm.setString(1, pessoa.getNome());
@@ -104,7 +107,8 @@ public class PessoaDAO {
             stm.setString(3, pessoa.getBairro());
             stm.setString(4, pessoa.getCidade());
             stm.setString(5, pessoa.getEmail());
-            stm.setInt(6, pessoa.getId());
+            stm.setString(6, pessoa.getData());
+            stm.setInt(7, pessoa.getId());
 
             stm.executeUpdate();
             

@@ -70,6 +70,8 @@ public class PessoaForm extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         edBairro = new javax.swing.JTextField();
         edCidade = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        edData = new javax.swing.JFormattedTextField();
 
         jTextField3.setText("jTextField3");
 
@@ -204,6 +206,20 @@ public class PessoaForm extends javax.swing.JFrame {
 
         edCidade.setEnabled(false);
 
+        jLabel8.setText("Data de Nascimento:");
+
+        try {
+            edData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        edData.setEnabled(false);
+        edData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edDataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelCadastroLayout = new javax.swing.GroupLayout(painelCadastro);
         painelCadastro.setLayout(painelCadastroLayout);
         painelCadastroLayout.setHorizontalGroup(
@@ -217,38 +233,37 @@ public class PessoaForm extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(25, 25, 25)
                         .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(edId, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(painelCadastroLayout.createSequentialGroup()
                                 .addComponent(edNome)
-                                .addContainerGap())
-                            .addGroup(painelCadastroLayout.createSequentialGroup()
-                                .addComponent(edId, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(347, 671, Short.MAX_VALUE))))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(edData, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(painelCadastroLayout.createSequentialGroup()
+                        .addComponent(btGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 412, Short.MAX_VALUE))
+                    .addGroup(painelCadastroLayout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(edEmail))
                     .addGroup(painelCadastroLayout.createSequentialGroup()
                         .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelCadastroLayout.createSequentialGroup()
-                                .addComponent(btGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btCancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(painelCadastroLayout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(edEmail))
-                            .addGroup(painelCadastroLayout.createSequentialGroup()
-                                .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(edEndereco)
-                                    .addComponent(edBairro)
-                                    .addComponent(edCidade))))
-                        .addContainerGap())))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(edEndereco)
+                            .addComponent(edBairro)
+                            .addComponent(edCidade))))
+                .addContainerGap())
         );
         painelCadastroLayout.setVerticalGroup(
             painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,7 +275,9 @@ public class PessoaForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(edNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(edData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -294,13 +311,13 @@ public class PessoaForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE))
+                .addComponent(painelPrincipal))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE))
+                .addComponent(painelPrincipal))
         );
 
         pack();
@@ -317,6 +334,7 @@ public class PessoaForm extends javax.swing.JFrame {
         edBairro.setEnabled(true);
         edCidade.setEnabled(true);
         edEmail.setEnabled(true);
+        edData.setEnabled(true);
         btNovo.setEnabled(false);
         btGravar.setEnabled(true);
         btCancelar.setEnabled(true);
@@ -367,6 +385,7 @@ public class PessoaForm extends javax.swing.JFrame {
             edBairro.setEnabled(true);
             edCidade.setEnabled(true);
             edEmail.setEnabled(true);
+            edData.setEnabled(true);
             btNovo.setEnabled(false);
             btGravar.setEnabled(true);
             btCancelar.setEnabled(true);
@@ -417,6 +436,10 @@ public class PessoaForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_edBairroActionPerformed
 
+    private void edDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edDataActionPerformed
+
     private void editParaPessoa() {
         if(edId.getText() != null && !edId.getText().isEmpty()) {
             pessoa.setId(Integer.parseInt(edId.getText()));
@@ -426,6 +449,7 @@ public class PessoaForm extends javax.swing.JFrame {
         pessoa.setBairro(edBairro.getText());
         pessoa.setCidade(edCidade.getText());
         pessoa.setEmail(edEmail.getText());
+        pessoa.setData(edData.getText());
     }
 
     private void pessoaParaEdit() {
@@ -435,6 +459,7 @@ public class PessoaForm extends javax.swing.JFrame {
         edBairro.setText(pessoa.getBairro());
         edCidade.setText(pessoa.getCidade());
         edEmail.setText(pessoa.getEmail());
+        edData.setText(pessoa.getData());
     }
 
     private void limparEdits() {
@@ -444,6 +469,7 @@ public class PessoaForm extends javax.swing.JFrame {
         edBairro.setText("");
         edCidade.setText("");
         edEmail.setText("");
+        edData.setText("");
     }
     /**
      * @param args the command line arguments
@@ -489,6 +515,7 @@ public class PessoaForm extends javax.swing.JFrame {
     private javax.swing.JButton btPesquisar;
     private javax.swing.JTextField edBairro;
     private javax.swing.JTextField edCidade;
+    private javax.swing.JFormattedTextField edData;
     private javax.swing.JTextField edEmail;
     private javax.swing.JTextField edEndereco;
     private javax.swing.JTextField edId;
@@ -501,6 +528,7 @@ public class PessoaForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel painelCadastro;

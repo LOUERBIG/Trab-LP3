@@ -11,6 +11,7 @@ public class Pessoa {
     private String endereco;
     private String bairro;
     private String cidade;
+    private String data;
     private String email;
 
     public String getEndereco() {
@@ -61,8 +62,17 @@ public class Pessoa {
         this.endereco = endereco;
     }
 
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+    
+
     @Override
     public String toString() {
-        return "Pessoa[id: " + id + " nome: " + nome + "endereco:" + endereco + "bairro" + bairro + "email:" + email +"]";
+        return "Pessoa[id: " + id + " nome: " + nome + "endereco:" + endereco + "bairro" + bairro + "email:" + email + "data:" + data + "]";
     }
 }
