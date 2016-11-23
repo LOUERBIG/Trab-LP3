@@ -11,6 +11,7 @@ public class Pessoa {
     private String endereco;
     private String bairro;
     private String cidade;
+    private String uf;
     private String data;
     private String email;
 
@@ -37,6 +38,15 @@ public class Pessoa {
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+    
 
     public void setId(Integer id) {
         this.id = id;
@@ -73,6 +83,6 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa[id: " + id + " nome: " + nome + "endereco:" + endereco + "bairro" + bairro + "email:" + email + "data:" + data + "]";
+        return "Pessoa[id: " + id + " nome: " + nome + "endereco:" + endereco + "bairro" + bairro + "cidade:" + cidade + "uf:" + uf + "email:" + email + "data:" + data + "]";
     }
 }

@@ -72,6 +72,8 @@ public class PessoaForm extends javax.swing.JFrame {
         edCidade = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         edData = new javax.swing.JFormattedTextField();
+        jLabel9 = new javax.swing.JLabel();
+        edUf = new javax.swing.JFormattedTextField();
 
         jTextField3.setText("jTextField3");
 
@@ -115,7 +117,7 @@ public class PessoaForm extends javax.swing.JFrame {
                 .addComponent(edNomeParam, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btPesquisar)
-                .addContainerGap(364, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
         painelPesquisaLayout.setVerticalGroup(
@@ -205,6 +207,11 @@ public class PessoaForm extends javax.swing.JFrame {
         });
 
         edCidade.setEnabled(false);
+        edCidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edCidadeActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Data de Nascimento:");
 
@@ -219,6 +226,16 @@ public class PessoaForm extends javax.swing.JFrame {
                 edDataActionPerformed(evt);
             }
         });
+
+        jLabel9.setText("UF: ");
+
+        edUf.setBackground(new java.awt.Color(240, 240, 240));
+        try {
+            edUf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("AA")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        edUf.setEnabled(false);
 
         javax.swing.GroupLayout painelCadastroLayout = new javax.swing.GroupLayout(painelCadastro);
         painelCadastro.setLayout(painelCadastroLayout);
@@ -235,7 +252,7 @@ public class PessoaForm extends javax.swing.JFrame {
                         .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(edId, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(painelCadastroLayout.createSequentialGroup()
-                                .addComponent(edNome)
+                                .addComponent(edNome, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -247,8 +264,7 @@ public class PessoaForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 412, Short.MAX_VALUE))
+                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(painelCadastroLayout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -262,7 +278,12 @@ public class PessoaForm extends javax.swing.JFrame {
                         .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(edEndereco)
                             .addComponent(edBairro)
-                            .addComponent(edCidade))))
+                            .addGroup(painelCadastroLayout.createSequentialGroup()
+                                .addComponent(edCidade)
+                                .addGap(49, 49, 49)
+                                .addComponent(jLabel9)
+                                .addGap(18, 18, 18)
+                                .addComponent(edUf, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         painelCadastroLayout.setVerticalGroup(
@@ -289,7 +310,10 @@ public class PessoaForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(edCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(edCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9)
+                        .addComponent(edUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -333,6 +357,7 @@ public class PessoaForm extends javax.swing.JFrame {
         edEndereco.setEnabled(true);
         edBairro.setEnabled(true);
         edCidade.setEnabled(true);
+        edUf.setEnabled(true);
         edEmail.setEnabled(true);
         edData.setEnabled(true);
         btNovo.setEnabled(false);
@@ -384,6 +409,7 @@ public class PessoaForm extends javax.swing.JFrame {
             edEndereco.setEnabled(true);
             edBairro.setEnabled(true);
             edCidade.setEnabled(true);
+            edUf.setEnabled(true);
             edEmail.setEnabled(true);
             edData.setEnabled(true);
             btNovo.setEnabled(false);
@@ -440,6 +466,10 @@ public class PessoaForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_edDataActionPerformed
 
+    private void edCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edCidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edCidadeActionPerformed
+
     private void editParaPessoa() {
         if(edId.getText() != null && !edId.getText().isEmpty()) {
             pessoa.setId(Integer.parseInt(edId.getText()));
@@ -448,6 +478,7 @@ public class PessoaForm extends javax.swing.JFrame {
         pessoa.setEndereco(edEndereco.getText());
         pessoa.setBairro(edBairro.getText());
         pessoa.setCidade(edCidade.getText());
+        pessoa.setUf(edUf.getText());
         pessoa.setEmail(edEmail.getText());
         pessoa.setData(edData.getText());
     }
@@ -458,6 +489,7 @@ public class PessoaForm extends javax.swing.JFrame {
         edEndereco.setText(pessoa.getEndereco());
         edBairro.setText(pessoa.getBairro());
         edCidade.setText(pessoa.getCidade());
+        edUf.setText(pessoa.getUf());
         edEmail.setText(pessoa.getEmail());
         edData.setText(pessoa.getData());
     }
@@ -468,6 +500,7 @@ public class PessoaForm extends javax.swing.JFrame {
         edEndereco.setText("");
         edBairro.setText("");
         edCidade.setText("");
+        edUf.setText("");
         edEmail.setText("");
         edData.setText("");
     }
@@ -521,6 +554,7 @@ public class PessoaForm extends javax.swing.JFrame {
     private javax.swing.JTextField edId;
     private javax.swing.JTextField edNome;
     private javax.swing.JTextField edNomeParam;
+    private javax.swing.JFormattedTextField edUf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -529,6 +563,7 @@ public class PessoaForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel painelCadastro;

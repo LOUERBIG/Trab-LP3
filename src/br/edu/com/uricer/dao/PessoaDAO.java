@@ -22,15 +22,16 @@ public class PessoaDAO {
     }
 
     public Integer create(Pessoa pessoa) throws SQLException {
-        String sql = "insert into Pessoas(nome, endereco, bairro,cidade, email,data) values (?, ? ,? ,?, ?, ?)";
+        String sql = "insert into Pessoas(nome, endereco, bairro,cidade,uf,email,data) values (?, ?, ? ,? ,?, ?, ?)";
         Integer idCriado = 0;
         try (PreparedStatement stm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stm.setString(1, pessoa.getNome());
             stm.setString(2, pessoa.getEndereco());
             stm.setString(3, pessoa.getBairro());
             stm.setString(4, pessoa.getCidade());
-            stm.setString(5, pessoa.getEmail());
-            stm.setString(6, pessoa.getData());
+            stm.setString(5, pessoa.getUf());
+            stm.setString(6, pessoa.getEmail());
+            stm.setString(7, pessoa.getData());
             stm.execute();
             
             try (ResultSet resultSet = stm.getGeneratedKeys()) {
@@ -62,6 +63,7 @@ public class PessoaDAO {
                     pessoa.setEndereco(resultSet.getString("endereco"));
                     pessoa.setBairro(resultSet.getString("bairro"));
                     pessoa.setCidade(resultSet.getString("cidade"));
+                    pessoa.setUf(resultSet.getString("uf"));
                     pessoa.setEmail(resultSet.getString("email"));
                     pessoa.setData(resultSet.getString("data"));
                 }
@@ -88,6 +90,7 @@ public class PessoaDAO {
                     pessoa.setEndereco(resultSet.getString("endereco"));
                     pessoa.setBairro(resultSet.getString("bairro"));
                     pessoa.setCidade(resultSet.getString("cidade"));
+                    pessoa.setUf(resultSet.getString("uf"));
                     pessoa.setEmail(resultSet.getString("email"));
                     pessoa.setData(resultSet.getString("data"));
                     pessoas.add(pessoa);
@@ -99,16 +102,17 @@ public class PessoaDAO {
     }   
     
     public void update(Pessoa pessoa) throws SQLException {
-        String sql = "update Pessoas set nome = ?,endereco = ?,bairro = ?,cidade = ?,email = ?,data = ? where id = ?";
+        String sql = "update Pessoas set nome = ?,endereco = ?,bairro = ?,cidade = ?,uf = ?, email = ?,data = ? where id = ?";
         
         try (PreparedStatement stm = con.prepareStatement(sql)) {
             stm.setString(1, pessoa.getNome());
             stm.setString(2, pessoa.getEndereco());
             stm.setString(3, pessoa.getBairro());
             stm.setString(4, pessoa.getCidade());
-            stm.setString(5, pessoa.getEmail());
-            stm.setString(6, pessoa.getData());
-            stm.setInt(7, pessoa.getId());
+            stm.setString(5, pessoa.getUf());
+            stm.setString(6, pessoa.getEmail());
+            stm.setString(7, pessoa.getData());
+            stm.setInt(8, pessoa.getId());
 
             stm.executeUpdate();
             

@@ -32,7 +32,7 @@ public class PessoaTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 7;
+        return 8;
     }
 
     @Override
@@ -44,8 +44,9 @@ public class PessoaTableModel extends AbstractTableModel {
             case 2: return pessoa.getEndereco();
             case 3: return pessoa.getBairro();
             case 4: return pessoa.getCidade();
-            case 5: return pessoa.getEmail();
-            case 6: return pessoa.getData();
+            case 5: return pessoa.getUf();
+            case 6: return pessoa.getEmail();
+            case 7: return pessoa.getData();
             default:
                 throw new AssertionError();
         }
@@ -59,8 +60,9 @@ public class PessoaTableModel extends AbstractTableModel {
             case 2: return "Endereco";
             case 3: return "Bairro";
             case 4: return "Cidade";
-            case 5: return "Email";
-            case 6: return "Data de Nascimento";
+            case 5: return "Uf";
+            case 6: return "Email";
+            case 7: return "Data de Nascimento";
             default:
                 throw new AssertionError();
         }
