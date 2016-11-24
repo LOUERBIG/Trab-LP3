@@ -62,7 +62,7 @@ public class PessoaTableModel extends AbstractTableModel {
             case 2: return "Endereco";
             case 3: return "Bairro";
             case 4: return "Cidade";
-            case 5: return "Uf";
+            case 5: return "UF";
             case 6: return "Email";
             case 7: return "Data de Nascimento";
             case 8: return "Telefone";
