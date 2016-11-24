@@ -22,7 +22,7 @@ public class PessoaDAO {
     }
 
     public Integer create(Pessoa pessoa) throws SQLException {
-        String sql = "insert into Pessoas(nome, endereco, bairro,cidade,uf,email,data) values (?, ?, ? ,? ,?, ?, ?)";
+        String sql = "insert into Pessoas(nome, endereco, bairro,cidade,uf,email,data,telefone) values (?, ?, ?, ? ,? ,?, ?, ?)";
         Integer idCriado = 0;
         try (PreparedStatement stm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stm.setString(1, pessoa.getNome());
@@ -32,6 +32,7 @@ public class PessoaDAO {
             stm.setString(5, pessoa.getUf());
             stm.setString(6, pessoa.getEmail());
             stm.setString(7, pessoa.getData());
+            stm.setString(8, pessoa.getTelefone());
             stm.execute();
             
             try (ResultSet resultSet = stm.getGeneratedKeys()) {
@@ -66,6 +67,7 @@ public class PessoaDAO {
                     pessoa.setUf(resultSet.getString("uf"));
                     pessoa.setEmail(resultSet.getString("email"));
                     pessoa.setData(resultSet.getString("data"));
+                    pessoa.setTelefone(resultSet.getString("telefone"));
                 }
             }
         }
@@ -93,6 +95,7 @@ public class PessoaDAO {
                     pessoa.setUf(resultSet.getString("uf"));
                     pessoa.setEmail(resultSet.getString("email"));
                     pessoa.setData(resultSet.getString("data"));
+                    pessoa.setTelefone(resultSet.getString("telefone"));
                     pessoas.add(pessoa);
                 }
             }
@@ -102,7 +105,7 @@ public class PessoaDAO {
     }   
     
     public void update(Pessoa pessoa) throws SQLException {
-        String sql = "update Pessoas set nome = ?,endereco = ?,bairro = ?,cidade = ?,uf = ?, email = ?,data = ? where id = ?";
+        String sql = "update Pessoas set nome = ?,endereco = ?,bairro = ?,cidade = ?,uf = ?, email = ?,data = ?,telefone = ? where id = ?";
         
         try (PreparedStatement stm = con.prepareStatement(sql)) {
             stm.setString(1, pessoa.getNome());
@@ -112,7 +115,8 @@ public class PessoaDAO {
             stm.setString(5, pessoa.getUf());
             stm.setString(6, pessoa.getEmail());
             stm.setString(7, pessoa.getData());
-            stm.setInt(8, pessoa.getId());
+            stm.setString(8, pessoa.getTelefone());
+            stm.setInt(9, pessoa.getId());
 
             stm.executeUpdate();
             
