@@ -22,7 +22,7 @@ public class PessoaDAO {
     }
 
     public Integer create(Pessoa pessoa) throws SQLException {
-        String sql = "insert into Pessoas(nome, endereco, bairro,cidade,uf,email,data,telefone,celular) values (?, ?, ?, ?, ? ,? ,?, ?, ?)";
+        String sql = "insert into Pessoas(nome, endereco, bairro,cidade,uf,latitude, longitude,email,data,telefone,celular) values (?,?, ?, ?, ?, ?, ? ,? ,?, ?, ?)";
         Integer idCriado = 0;
         try (PreparedStatement stm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stm.setString(1, pessoa.getNome());
@@ -30,10 +30,12 @@ public class PessoaDAO {
             stm.setString(3, pessoa.getBairro());
             stm.setString(4, pessoa.getCidade());
             stm.setString(5, pessoa.getUf());
-            stm.setString(6, pessoa.getEmail());
-            stm.setString(7, pessoa.getData());
-            stm.setString(8, pessoa.getTelefone());
-            stm.setString(9, pessoa.getCelular());
+            stm.setString(6, pessoa.getLatitude());
+            stm.setString(7, pessoa.getLongitude());
+            stm.setString(8, pessoa.getEmail());
+            stm.setString(9, pessoa.getData());
+            stm.setString(10, pessoa.getTelefone());
+            stm.setString(11, pessoa.getCelular());
             stm.execute();
             
             try (ResultSet resultSet = stm.getGeneratedKeys()) {
@@ -66,6 +68,8 @@ public class PessoaDAO {
                     pessoa.setBairro(resultSet.getString("bairro"));
                     pessoa.setCidade(resultSet.getString("cidade"));
                     pessoa.setUf(resultSet.getString("uf"));
+                    pessoa.setLatitude(resultSet.getString("latitude"));
+                    pessoa.setLongitude(resultSet.getString("longitude"));
                     pessoa.setEmail(resultSet.getString("email"));
                     pessoa.setData(resultSet.getString("data"));
                     pessoa.setTelefone(resultSet.getString("telefone"));
@@ -95,6 +99,8 @@ public class PessoaDAO {
                     pessoa.setBairro(resultSet.getString("bairro"));
                     pessoa.setCidade(resultSet.getString("cidade"));
                     pessoa.setUf(resultSet.getString("uf"));
+                    pessoa.setLatitude(resultSet.getString("latitude"));
+                    pessoa.setLongitude(resultSet.getString("longitude"));
                     pessoa.setEmail(resultSet.getString("email"));
                     pessoa.setData(resultSet.getString("data"));
                     pessoa.setTelefone(resultSet.getString("telefone"));
@@ -108,7 +114,7 @@ public class PessoaDAO {
     }   
     
     public void update(Pessoa pessoa) throws SQLException {
-        String sql = "update Pessoas set nome = ?,endereco = ?,bairro = ?,cidade = ?,uf = ?, email = ?,data = ?,telefone = ?,celular = ? where id = ?";
+        String sql = "update Pessoas set nome = ?,endereco = ?,bairro = ?,cidade = ?,uf = ?,latitude = ?,longitude = ?, email = ?,data = ?,telefone = ?,celular = ? where id = ?";
         
         try (PreparedStatement stm = con.prepareStatement(sql)) {
             stm.setString(1, pessoa.getNome());
@@ -116,11 +122,13 @@ public class PessoaDAO {
             stm.setString(3, pessoa.getBairro());
             stm.setString(4, pessoa.getCidade());
             stm.setString(5, pessoa.getUf());
-            stm.setString(6, pessoa.getEmail());
-            stm.setString(7, pessoa.getData());
-            stm.setString(8, pessoa.getTelefone());
-            stm.setString(9, pessoa.getCelular());
-            stm.setInt(10, pessoa.getId());
+            stm.setString(6, pessoa.getLatitude());
+            stm.setString(7, pessoa.getLongitude());
+            stm.setString(8, pessoa.getEmail());
+            stm.setString(9, pessoa.getData());
+            stm.setString(10, pessoa.getTelefone());
+            stm.setString(11, pessoa.getCelular());
+            stm.setInt(12, pessoa.getId());
 
             stm.executeUpdate();
             

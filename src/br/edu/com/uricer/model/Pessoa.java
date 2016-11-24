@@ -16,6 +16,8 @@ public class Pessoa {
     private String email;
     private String telefone;
     private String celular;
+    private String latitude;
+    private String longitude;
 
     public String getEndereco() {
         return endereco;
@@ -97,10 +99,25 @@ public class Pessoa {
     public void setCelular(String celular) {
         this.celular = celular;
     }
-    
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
     
     @Override
     public String toString() {
-        return "Pessoa[id: " + id + " nome: " + nome + "endereco:" + endereco + "bairro" + bairro + "cidade:" + cidade + "uf:" + uf + "email:" + email + "data:" + data + "telefone:" + telefone + "celular:" + celular +"]";
+        return "Pessoa[id: " + id + " nome: " + nome + "endereco:" + endereco + "bairro" + bairro + "cidade:" + cidade + "uf:" + uf + "email:" + email + "data:" + data + "telefone:" + telefone + "celular:" + celular + "latitude" + latitude + "longitude" + longitude + "]";
     }
 }
