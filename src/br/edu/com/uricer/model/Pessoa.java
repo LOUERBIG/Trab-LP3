@@ -15,6 +15,7 @@ public class Pessoa {
     private String data;
     private String email;
     private String telefone;
+    private String celular;
 
     public String getEndereco() {
         return endereco;
@@ -88,10 +89,18 @@ public class Pessoa {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
     
     
     @Override
     public String toString() {
-        return "Pessoa[id: " + id + " nome: " + nome + "endereco:" + endereco + "bairro" + bairro + "cidade:" + cidade + "uf:" + uf + "email:" + email + "data:" + data + "telefone:" + telefone +"]";
+        return "Pessoa[id: " + id + " nome: " + nome + "endereco:" + endereco + "bairro" + bairro + "cidade:" + cidade + "uf:" + uf + "email:" + email + "data:" + data + "telefone:" + telefone + "celular:" + celular +"]";
     }
 }

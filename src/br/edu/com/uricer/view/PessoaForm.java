@@ -77,6 +77,8 @@ public class PessoaForm extends javax.swing.JFrame {
         edUf = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
         edTelefone = new javax.swing.JFormattedTextField();
+        jLabel11 = new javax.swing.JLabel();
+        edCelular = new javax.swing.JFormattedTextField();
 
         jTextField3.setText("jTextField3");
 
@@ -120,7 +122,7 @@ public class PessoaForm extends javax.swing.JFrame {
                 .addComponent(edNomeParam, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btPesquisar)
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(229, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
         painelPesquisaLayout.setVerticalGroup(
@@ -250,6 +252,15 @@ public class PessoaForm extends javax.swing.JFrame {
         }
         edTelefone.setEnabled(false);
 
+        jLabel11.setText("Celular:");
+
+        try {
+            edCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        edCelular.setEnabled(false);
+
         javax.swing.GroupLayout painelCadastroLayout = new javax.swing.GroupLayout(painelCadastro);
         painelCadastro.setLayout(painelCadastroLayout);
         painelCadastroLayout.setHorizontalGroup(
@@ -268,34 +279,35 @@ public class PessoaForm extends javax.swing.JFrame {
                             .addComponent(edBairro)
                             .addGroup(painelCadastroLayout.createSequentialGroup()
                                 .addComponent(edCidade)
-                                .addGap(49, 49, 49)
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabel9)
                                 .addGap(18, 18, 18)
                                 .addComponent(edUf, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(painelCadastroLayout.createSequentialGroup()
                         .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(25, 25, 25)
+                        .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelCadastroLayout.createSequentialGroup()
-                                .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addGap(25, 25, 25)
-                                .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(edId, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(painelCadastroLayout.createSequentialGroup()
-                                        .addComponent(edNome, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(edData, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(edId, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(painelCadastroLayout.createSequentialGroup()
-                                .addComponent(btGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btCancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(edNome)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(edData, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(painelCadastroLayout.createSequentialGroup()
+                        .addComponent(btGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
+                        .addComponent(edCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(painelCadastroLayout.createSequentialGroup()
                         .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -304,8 +316,10 @@ public class PessoaForm extends javax.swing.JFrame {
                         .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(edEmail)
                             .addGroup(painelCadastroLayout.createSequentialGroup()
-                                .addComponent(edTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addComponent(edTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel11)
+                                .addGap(123, 123, 123)))))
                 .addContainerGap())
         );
         painelCadastroLayout.setVerticalGroup(
@@ -343,7 +357,9 @@ public class PessoaForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(edTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(edCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -387,6 +403,7 @@ public class PessoaForm extends javax.swing.JFrame {
         edEmail.setEnabled(true);
         edData.setEnabled(true);
         edTelefone.setEnabled(true);
+        edCelular.setEnabled(true);
         btNovo.setEnabled(false);
         btGravar.setEnabled(true);
         btCancelar.setEnabled(true);
@@ -440,6 +457,7 @@ public class PessoaForm extends javax.swing.JFrame {
             edEmail.setEnabled(true);
             edData.setEnabled(true);
             edTelefone.setEnabled(true);
+            edCelular.setEnabled(true);
             btNovo.setEnabled(false);
             btGravar.setEnabled(true);
             btCancelar.setEnabled(true);
@@ -510,6 +528,7 @@ public class PessoaForm extends javax.swing.JFrame {
         pessoa.setEmail(edEmail.getText());
         pessoa.setData(edData.getText());
         pessoa.setTelefone(edTelefone.getText());
+        pessoa.setCelular(edCelular.getText());
     }
 
     private void pessoaParaEdit() {
@@ -522,6 +541,7 @@ public class PessoaForm extends javax.swing.JFrame {
         edEmail.setText(pessoa.getEmail());
         edData.setText(pessoa.getData());
         edTelefone.setText(pessoa.getTelefone());
+        edCelular.setText(pessoa.getCelular());
     }
 
     private void limparEdits() {
@@ -534,6 +554,7 @@ public class PessoaForm extends javax.swing.JFrame {
         edEmail.setText("");
         edData.setText("");
         edTelefone.setText("");
+        edCelular.setText("");
     }
     /**
      * @param args the command line arguments
@@ -578,6 +599,7 @@ public class PessoaForm extends javax.swing.JFrame {
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btPesquisar;
     private javax.swing.JTextField edBairro;
+    private javax.swing.JFormattedTextField edCelular;
     private javax.swing.JTextField edCidade;
     private javax.swing.JFormattedTextField edData;
     private javax.swing.JTextField edEmail;
@@ -589,6 +611,7 @@ public class PessoaForm extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField edUf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
